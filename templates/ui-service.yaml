@@ -11,8 +11,7 @@ metadata:
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
   {{- if .Values.ui.service.annotations }}
-  annotations:
-    {{ tpl .Values.ui.service.annotations . | nindent 4 | trim }}
+  annotations: {{ toYaml .Values.ui.service.annotations | nindent 4 }}
   {{- end }}
 spec:
   selector:
